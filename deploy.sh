@@ -127,6 +127,81 @@ EOF
 echo "Shadowrocket配置链接："
 cat /etc/hysteria/login_info/shadowrocket.txt
 
+# 生成furious配置链接
+cat << EOF > /etc/hysteria/login_info/furious.txt
+hysteria2://$password@$domain:443,20000-50000/?insecure=0&sni=$domain
+EOF
+echo "Furious配置链接："
+cat /etc/hysteria/login_info/furious.txt
+
+# 生成连接操作SOP
+cat << EOF > /etc/hysteria/login_info/sop.md 
+# Windows客户端
+
+1. 如果之前装过v2rayN软件, 请删除旧的v2rayN文件
+
+2. 请将v2rayN压缩包解压到D:\Program Files
+
+3. 进入文件夹, 将v2rayN.exe固定到开始菜单
+
+4. 按win键进入开始菜单, 右键单击v2rayN图标, 点击更多-打开文件位置
+
+5. 在新出现的文件夹, 右键点击v2rayN, 点击属性-高级-用管理员身份运行-确定
+
+6. 如果之前没安装过v2rayN, 则需要先安装 windowsdesktop-runtime-6.0.15-win-x64
+
+7. 点击开始菜单V2rayN图标（然后会有一个页面闪现并自动关闭）
+
+8. 左键双击右下角工具栏v2rayN图标, 唤出主界面
+
+9. 在主界面, 依次点击 设置-参数设置-v2rayn设置-开机启动-确定
+
+10. 在主界面, 系统代理选择自动配置系统代理, 路由选择绕过大陆
+
+11. 至此安装完成, 可以开始使用了. 浏览器如果安装过SwitchyOmega插件, 请将代理模式设置为系统代理, 或者卸载SwitchyOmega插件.
+
+
+# Android客户端
+
+1. 下载安装Nekobox软件
+
+2. 复制nekobox配置链接: hy2://$password@$domain:443/?mport=443%2C20000-50000#$file_name
+
+3. 在Nekobox软件中, 点击右上角加号, 再点击从剪贴板导入
+
+4. 点击正下方纸飞机符号启用代理配置
+
+
+# iOS客户端
+
+1. 删除9月以前安装的Shadowrocket软件
+
+2. 点击appstore图标, 点击右上角头像, 拉到最底下, 点击退出当前的apple id
+
+3. 登陆美区ID
+
+4. 搜索并下载Shadowrocket软件
+
+5. 退出美区ID, 登陆旧ID
+
+6. 复制shadowrocket配置链接: hysteria2://$password@$domain?peer=$domain&obfs=none&mport=443,20000-50000&fastopen=1#$file_name
+
+7. 在Shadowrocket软件中, 点击右上角加号, 再点击从剪贴板导入
+
+8. 在shadowrocket软件主界面, 启用该服务器
+
+
+# Mac客户端
+
+1. 下载安装furious软件
+
+2. 复制furious配置链接: hysteria2://$password@$domain:443,20000-50000/?insecure=0&sni=$domain
+
+3. 在furious软件启用服务器
+
+
+EOF
+
 # 将hysteria2服务设置为开机启动
 systemctl enable hysteria-server.service
 
