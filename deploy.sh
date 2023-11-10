@@ -81,12 +81,11 @@ outbounds:
 #     - isp(tiktok.com)
 #     - isp(*.tiktok.com)
 #     - isp(*.ibytedtos.com)
-#     - isp(*.ttwstatic.com)
-    
+#     - isp(*.ttwstatic.com) 
 EOF
 
 # 生成v2rayN配置文件
-cat << EOF > /etc/hysteria/login_info/$file_name.yaml
+sudo cat << EOF > /etc/hysteria/login_info/$file_name.yaml
 
 server: $domain:443,20000-50000
 auth: $password
@@ -111,31 +110,31 @@ transport:
 
 EOF
 echo "V2rayN配置文件："
-cat /etc/hysteria/login_info/$file_name.yaml
+sudo cat /etc/hysteria/login_info/$file_name.yaml
 
 # 生成nekobox配置链接
-cat << EOF > /etc/hysteria/login_info/nekobox.txt
+sudo cat << EOF > /etc/hysteria/login_info/nekobox.txt
 hy2://$password@$domain:443/?mport=443%2C20000-50000#$file_name
 EOF
 echo "Nekobox配置链接："
 cat /etc/hysteria/login_info/nekobox.txt
 
 # 生成shadowrocket配置链接
-cat << EOF > /etc/hysteria/login_info/shadowrocket.txt
+sudo cat << EOF > /etc/hysteria/login_info/shadowrocket.txt
 hysteria2://$password@$domain?peer=$domain&obfs=none&mport=443,20000-50000&fastopen=1#$file_name
 EOF
 echo "Shadowrocket配置链接："
 cat /etc/hysteria/login_info/shadowrocket.txt
 
 # 生成furious配置链接
-cat << EOF > /etc/hysteria/login_info/furious.txt
+sudo cat << EOF > /etc/hysteria/login_info/furious.txt
 hysteria2://$password@$domain:443,20000-50000/?insecure=0&sni=$domain
 EOF
 echo "Furious配置链接："
 cat /etc/hysteria/login_info/furious.txt
 
 # 生成连接操作SOP
-cat << EOF > /etc/hysteria/login_info/sop_$file_name.md 
+sudo cat << EOF > /etc/hysteria/login_info/sop_$file_name.md 
 # Windows客户端
 
 1. 如果之前装过v2rayN软件, 请删除旧的v2rayN文件
