@@ -199,8 +199,9 @@ cat << EOF > /etc/hysteria/login_info/sop_$file_name.md
 
 3. 在furious软件启用服务器
 
-
 EOF
+echo "连接操作SOP："
+cat /etc/hysteria/login_info/sop_$file_name.md
 
 # 将hysteria2服务设置为开机启动
 systemctl enable hysteria-server.service
