@@ -135,7 +135,7 @@ echo "Furious配置链接："
 cat /etc/hysteria/login_info/furious.txt
 
 # 生成连接操作SOP
-cat << EOF > /etc/hysteria/login_info/sop.md 
+cat << EOF > /etc/hysteria/login_info/sop_$file_name.md 
 # Windows客户端
 
 1. 如果之前装过v2rayN软件, 请删除旧的v2rayN文件
