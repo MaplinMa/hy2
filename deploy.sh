@@ -59,37 +59,14 @@ masquerade:
 outbounds:
   - name: default
     type: direct
-#   - name: isp
-#     type: socks5
-#     socks5:
-#       addr:  # 填入IP:PORT
-#       username:  #填入用户名
-#       password:  #填入密码
-#   # - name: isp
-#   #   type: http
-#   #   http: 
-#   #     url:  #填入完整链接, 格式为 http://username:password@ip:port
-#   #     insecure: false   
-# acl:      
-#   inline:
-#     - isp(openai.com)
-#     - isp(*.openai.com)
-#     - isp(myip.ipip.net) 
-#     - isp(*adobe*)
-#     - isp(bing.com)
-#     - isp(*.bing.com)
-#     - isp(tiktok.com)
-#     - isp(*.tiktok.com)
-#     - isp(*.ibytedtos.com)
-#     - isp(*.ttwstatic.com) 
+    
 EOF
 
 #生成配置信息文件夹
-sudo mkdir -p /etc/hysteria/login_info/
+mkdir -p /etc/hysteria/login_info/
 
 # 生成v2rayN配置文件
-sudo cat << EOF > /etc/hysteria/login_info/$file_name.yaml
-
+cat << EOF > /etc/hysteria/login_info/$file_name.yaml
 server: $domain:443,20000-50000
 auth: $password
 
@@ -109,35 +86,34 @@ http:
 transport:
   type: udp
   udp:
-    hopInterval: 10s 
-
+    hopInterval: 10s
 EOF
 echo "V2rayN配置文件："
-sudo cat /etc/hysteria/login_info/$file_name.yaml
+cat /etc/hysteria/login_info/$file_name.yaml
 
 # 生成nekobox配置链接
-sudo cat << EOF > /etc/hysteria/login_info/nekobox.txt
+cat << EOF > /etc/hysteria/login_info/nekobox.txt
 hy2://$password@$domain:443/?mport=443%2C20000-50000#$file_name
 EOF
 echo "Nekobox配置链接："
 cat /etc/hysteria/login_info/nekobox.txt
 
 # 生成shadowrocket配置链接
-sudo cat << EOF > /etc/hysteria/login_info/shadowrocket.txt
+cat << EOF > /etc/hysteria/login_info/shadowrocket.txt
 hysteria2://$password@$domain?peer=$domain&obfs=none&mport=443,20000-50000&fastopen=1#$file_name
 EOF
 echo "Shadowrocket配置链接："
 cat /etc/hysteria/login_info/shadowrocket.txt
 
 # 生成furious配置链接
-sudo cat << EOF > /etc/hysteria/login_info/furious.txt
+cat << EOF > /etc/hysteria/login_info/furious.txt
 hysteria2://$password@$domain:443,20000-50000/?insecure=0&sni=$domain
 EOF
 echo "Furious配置链接："
 cat /etc/hysteria/login_info/furious.txt
 
 # 生成连接操作SOP
-sudo cat << EOF > /etc/hysteria/login_info/sop_$file_name.md 
+cat << EOF > /etc/hysteria/login_info/sop_$file_name.md 
 # Windows客户端
 
 1. 如果之前装过v2rayN软件, 请删除旧的v2rayN文件
