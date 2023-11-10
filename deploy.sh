@@ -84,6 +84,9 @@ outbounds:
 #     - isp(*.ttwstatic.com) 
 EOF
 
+#生成配置信息文件夹
+sudo mkdir -p /etc/hysteria/login_info/
+
 # 生成v2rayN配置文件
 sudo cat << EOF > /etc/hysteria/login_info/$file_name.yaml
 
